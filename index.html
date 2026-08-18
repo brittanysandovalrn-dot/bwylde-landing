@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>b.wylde. Be Wylde.</title>
+<meta name="description" content="Feral isn't what you were before. It's what you choose once you already know how to survive a life that was never yours. FERAL framework, Be Untamable, and the free Feral Field Guide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@1&family=Space+Grotesk:wght@300..600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1411;
+    --bone:#EFEDE3;
+    --emerald:#046B45;
+    --plum:#7A2E52;
+    --plum-bright:#A8437A;
+    --citron:#C9E356;
+    --emerald-deep:#02311F;
+    --rust:#C4441F;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;overflow-x:hidden;width:100%;}
+
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    font-size:18px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    width:100%;
+  }
+
+  img{max-width:100%;display:block;}
+
+  h1,h2,h3,.display{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.04em;
+    line-height:1.02;
+    text-transform:none;
+  }
+
+  em, .serif{
+    font-family:'Instrument Serif',serif;
+    font-style:italic;
+    font-weight:400;
+    letter-spacing:0;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  section{padding:120px 0;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);
+    border-bottom:1px solid rgba(239,237,227,0.12);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:20px;padding-bottom:20px;
+  }
+  .logo{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;font-size:22px;letter-spacing:-0.03em;
+    color:var(--bone);
+  }
+  .logo .dot{color:var(--citron);}
+  nav ul{display:flex;gap:36px;list-style:none;}
+  nav ul li a{
+    font-size:14px;text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--bone);opacity:0.75;
+  }
+  nav ul li a:hover{opacity:1;color:var(--citron);}
+  .nav-links{display:flex;}
+  @media(max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+    padding:16px 34px;
+    border:2px solid var(--citron);
+    color:var(--citron);
+    background:transparent;
+    border-radius:0;
+    cursor:pointer;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{background:var(--citron);color:var(--ink);}
+  .btn.solid{background:var(--citron);color:var(--ink);}
+  .btn.solid:hover{background:transparent;color:var(--citron);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:100px 0 130px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    font-size:14px;text-transform:uppercase;letter-spacing:0.18em;
+    color:var(--citron);margin-bottom:28px;font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(48px,8vw,104px);
+    margin-bottom:36px;
+    max-width:960px;
+  }
+  .hero .lede{
+    max-width:620px;
+    font-size:20px;
+    color:rgba(239,237,227,0.85);
+    margin-bottom:44px;
+  }
+  .hero .cta-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+  .hero .period-big{
+    position:absolute;
+    right:-40px;top:-60px;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:min(50vw,560px);
+    color:var(--citron);
+    line-height:1;
+    opacity:0.14;
+    pointer-events:none;
+    user-select:none;
+  }
+
+  /* ---------- the break ---------- */
+  .the-break{
+    height:6px;
+    background:var(--citron);
+    width:100%;
+  }
+
+  /* ---------- thesis ---------- */
+  .thesis{background:var(--ink);}
+  .thesis .wrap{max-width:820px;}
+  .thesis .thesis-about-grid{
+    max-width:1080px;
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media(max-width:800px){ .thesis .thesis-about-grid{grid-template-columns:1fr;} }
+  .thesis .thesis-about-grid .headshot-frame{max-width:320px;}
+  .thesis p{
+    font-size:22px;
+    line-height:1.65;
+    color:rgba(239,237,227,0.92);
+    margin-bottom:28px;
+  }
+  .thesis p:last-child{margin-bottom:0;}
+  .thesis .pull{
+    font-size:38px;
+    margin:52px 0;
+    color:var(--citron);
+    line-height:1.3;
+  }
+
+  /* ---------- block sections (hard blocks) ---------- */
+  .block-emerald{background:var(--emerald-deep);}
+  .block-plum{background:var(--plum);}
+  .block-bone{background:var(--bone);color:var(--ink);}
+
+  .tag{
+    display:inline-block;
+    font-size:13px;text-transform:uppercase;letter-spacing:0.16em;
+    color:var(--citron);font-weight:600;margin-bottom:20px;
+  }
+  .block-bone .tag{color:var(--plum);}
+
+  h2.section-title{
+    font-size:clamp(32px,5vw,56px);
+    margin-bottom:24px;
+  }
+  .section-lede{
+    max-width:640px;
+    font-size:19px;
+    opacity:0.85;
+    margin-bottom:64px;
+  }
+
+  /* ---------- FERAL grid ---------- */
+  .feral-list{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid rgba(239,237,227,0.2);
+  }
+  .feral-row{
+    display:grid;
+    grid-template-columns:90px 200px 1fr 220px;
+    gap:32px;
+    align-items:center;
+    padding:36px 0;
+    border-bottom:1px solid rgba(239,237,227,0.2);
+  }
+  .feral-row .letter{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:56px;
+    color:var(--citron);
+    line-height:1;
+  }
+  .feral-row .word-tone .word{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:24px;
+    letter-spacing:-0.02em;
+    margin-bottom:6px;
+  }
+  .feral-row .word-tone .tone{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:rgba(239,237,227,0.55);
+  }
+  .feral-row p{font-size:16px;opacity:0.85;}
+  .feral-row .shift-bar{width:100%;}
+
+  @media(max-width:820px){
+    .feral-row{
+      grid-template-columns:1fr;
+      gap:14px;
+      padding:32px 0;
+      text-align:left;
+    }
+    .feral-row .letter{font-size:44px;}
+  }
+
+  .directions-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    background:rgba(239,237,227,0.15);
+    margin-bottom:56px;
+  }
+  @media(max-width:640px){
+    .directions-strip{grid-template-columns:1fr;}
+  }
+  .directions-strip div{
+    background:var(--ink);
+    padding:26px 24px;
+    border-top:3px solid var(--citron);
+  }
+  .directions-strip .dir-label{
+    display:block;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:-0.02em;
+    color:var(--citron);
+    margin-bottom:8px;
+  }
+  .directions-strip p{font-size:15px;opacity:0.85;}
+
+  .feral-closing{
+    margin-top:56px;
+    max-width:760px;
+    font-size:18px;
+    opacity:0.9;
+  }
+  .shift-bar{
+    display:flex;
+    font-size:13px;
+    font-weight:600;
+    border:1px solid rgba(239,237,227,0.25);
+  }
+  .shift-bar span{padding:8px 10px;flex:1;text-align:center;}
+  .shift-bar .from{background:var(--bone);color:var(--ink);}
+  .shift-bar .arrow{background:var(--citron);color:var(--ink);flex:0 0 34px;}
+  .shift-bar .to{background:var(--emerald);color:var(--bone);}
+
+  /* ---------- book block ---------- */
+  .book-block .wrap{max-width:760px;}
+  .book-block .book-quote{
+    font-size:clamp(26px,4vw,36px);
+    color:var(--citron);
+    margin:26px 0 28px;
+    line-height:1.3;
+  }
+  .book-block p{font-size:19px;opacity:0.92;max-width:600px;margin-bottom:24px;}
+  .book-updates{margin-top:40px;}
+  .book-updates-label{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:14px;
+    max-width:420px;
+  }
+
+  /* ---------- speaking block ---------- */
+  .speak-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2px;
+    background:rgba(239,237,227,0.15);
+    margin:16px 0 48px;
+  }
+  @media(max-width:640px){ .speak-grid{grid-template-columns:1fr;} }
+  .speak-card{
+    background:var(--emerald-deep);
+    padding:34px 28px;
+  }
+  .speak-card .kicker{
+    font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+    color:var(--citron);font-weight:600;margin-bottom:14px;
+  }
+  .speak-card h3{font-size:24px;margin-bottom:14px;}
+  .speak-card p{font-size:15px;opacity:0.88;}
+  .tf-list{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid rgba(239,237,227,0.2);
+  }
+  .tf-row{
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:12px;
+    align-items:baseline;
+    padding:10px 0;
+    border-bottom:1px solid rgba(239,237,227,0.2);
+  }
+  .tf-letter{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:17px;
+    color:var(--citron);
+  }
+  .tf-text{font-size:14px;opacity:0.9;}
+  .speak-mechanism{
+    max-width:760px;
+    font-size:19px;
+    opacity:0.92;
+    margin-bottom:40px;
+  }
+
+  /* ---------- podcasts ---------- */
+  .doorway-list{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid rgba(14,20,17,0.15);
+    margin-bottom:56px;
+  }
+  .doorway-row{
+    padding:28px 0;
+    border-bottom:1px solid rgba(14,20,17,0.15);
+  }
+  .doorway-row h3{
+    font-size:21px;
+    margin-bottom:6px;
+    color:var(--ink);
+  }
+  .doorway-row .doorway-tag{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--plum);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .doorway-row p{font-size:16px;color:rgba(14,20,17,0.8);max-width:680px;}
+
+  .podcast-inquiry{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+    background:rgba(14,20,17,0.12);
+  }
+  @media(max-width:700px){ .podcast-inquiry{grid-template-columns:1fr;} }
+  .podcast-inquiry > div{
+    background:var(--ink);
+    color:var(--bone);
+    padding:32px 28px;
+  }
+  .podcast-inquiry h4{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:19px;
+    letter-spacing:-0.02em;
+    margin-bottom:10px;
+    color:var(--citron);
+  }
+  .podcast-inquiry p{font-size:14px;opacity:0.85;margin-bottom:18px;max-width:340px;}
+
+  .headshot-frame{
+    aspect-ratio:4/5;
+    width:100%;
+    background:var(--emerald-deep);
+    border:2px solid var(--plum);
+    position:relative;
+    overflow:hidden;
+  }
+  .headshot-frame img{
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .headshot-placeholder{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    text-align:center;
+    padding:24px;
+  }
+  .headshot-placeholder span{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:20px;
+    color:var(--citron);
+  }
+  .headshot-placeholder small{
+    font-size:12px;
+    color:rgba(239,237,227,0.5);
+    max-width:200px;
+  }
+
+  /* ---------- field guide / opt-in ---------- */
+  .field-guide{
+    background:var(--ink);
+    position:relative;
+  }
+  .field-guide .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  @media(max-width:800px){ .field-guide .wrap{grid-template-columns:1fr;} }
+
+  .fg-mock{
+    background:var(--emerald-deep);
+    aspect-ratio:8.5/11;
+    max-width:340px;
+    position:relative;
+    border:1px solid rgba(201,227,86,0.3);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:32px;
+  }
+  .fg-mock .fg-period{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:80px;
+    color:var(--citron);
+    line-height:1;
+  }
+  .fg-mock h4{
+    font-size:26px;
+    line-height:1.15;
+    color:var(--bone);
+  }
+  .fg-mock .fg-foot{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--citron);
+  }
+
+  .fg-copy .tag{color:var(--citron);}
+  .fg-copy h2{font-size:clamp(30px,5vw,46px);margin-bottom:24px;}
+  .fg-copy p{font-size:18px;opacity:0.88;margin-bottom:18px;max-width:480px;}
+
+  .fg-details{
+    display:flex;
+    gap:28px;
+    margin:28px 0 34px;
+    flex-wrap:wrap;
+  }
+  .fg-details div{font-size:14px;}
+  .fg-details strong{
+    display:block;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:26px;
+    color:var(--citron);
+    font-weight:800;
+  }
+
+  form.opt-in{
+    display:flex;
+    gap:0;
+    max-width:460px;
+    border:2px solid var(--bone);
+  }
+  form.opt-in input[type="email"]{
+    flex:1;
+    background:transparent;
+    border:none;
+    padding:16px 18px;
+    color:var(--bone);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;
+    outline:none;
+  }
+  form.opt-in input::placeholder{color:rgba(239,237,227,0.5);}
+  form.opt-in button{
+    border:none;
+    background:var(--citron);
+    color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:0 26px;
+    cursor:pointer;
+  }
+  form.opt-in button:hover{background:var(--bone);}
+  .fg-fineprint{font-size:13px;opacity:0.55;margin-top:14px;}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);
+    border-top:1px solid rgba(239,237,227,0.12);
+    padding:70px 0 40px;
+  }
+  footer .foot-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:32px;
+    margin-bottom:52px;
+  }
+  footer .foot-period{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:120px;
+    color:var(--citron);
+    line-height:0.7;
+  }
+  footer .foot-links{display:flex;gap:32px;flex-wrap:wrap;}
+  footer .foot-links a{font-size:14px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.75;}
+  footer .foot-links a:hover{opacity:1;color:var(--citron);}
+  footer .foot-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:13px;opacity:0.5;
+  }
+
+  @media(max-width:600px){
+    section{padding:80px 0;}
+    .hero{padding:70px 0 90px;}
+    .speak-card{padding:28px 24px;}
+  }
+
+  /* ---------- accordion ---------- */
+  details.acc-section summary{
+    list-style:none;
+    cursor:pointer;
+  }
+  details.acc-section summary::-webkit-details-marker{display:none;}
+  details.acc-section summary::marker{content:'';}
+  .acc-summary-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:40px 32px;
+  }
+  .acc-summary-title{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:clamp(22px,4vw,32px);
+    letter-spacing:-0.03em;
+  }
+  details.acc-section summary:hover .acc-summary-title{color:var(--citron);}
+  details.block-bone.acc-section summary:hover .acc-summary-title{color:var(--plum);}
+  .acc-icon-wrap{
+    flex-shrink:0;
+    width:34px;height:34px;
+    border:2px solid var(--citron);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:18px;
+    color:var(--citron);
+    line-height:1;
+  }
+  details.block-bone.acc-section .acc-icon-wrap{border-color:var(--plum);color:var(--plum);}
+  .acc-icon-minus{display:none;}
+  details[open] .acc-icon-plus{display:none;}
+  details[open] .acc-icon-minus{display:block;}
+  .acc-content{padding-bottom:90px;}
+  @media(max-width:600px){
+    .acc-summary-inner{padding:28px 20px;}
+    .acc-content{padding-bottom:60px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">b<span class="dot">.</span>wylde</div>
+    <ul class="nav-links">
+      <li><a href="#field-guide">Field Guide</a></li>
+      <li><a href="#feral">FERAL</a></li>
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#podcast">Podcasts</a></li>
+    </ul>
+    <a href="#field-guide" class="btn solid" style="padding:10px 22px;font-size:13px;">Get the Guide</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="period-big">.</div>
+  <div class="wrap">
+    <div class="eyebrow">Be Wylde.</div>
+    <h1>You could've stayed.<br>You were good at it.<br><em>You went anyway.</em></h1>
+    <p class="lede">You didn't lose yourself. You learned the rules of a life that was never built for you. Feral isn't what you were before. It's what you choose once you already know how to survive a life that was never yours.</p>
+    <div class="cta-row">
+      <a href="#field-guide" class="btn solid">Get the Feral Field Guide</a>
+      <a href="#feral" class="btn">See the framework</a>
+    </div>
+  </div>
+</header>
+
+<div class="the-break"></div>
+
+<!-- THESIS + ABOUT, COMBINED -->
+<details class="acc-section thesis" id="thesis">
+  <summary class="acc-summary">
+    <div class="wrap acc-summary-inner">
+      <span class="acc-summary-title">Where This Came From</span>
+      <span class="acc-icon-wrap"><span class="acc-icon-plus">+</span><span class="acc-icon-minus">−</span></span>
+    </div>
+  </summary>
+  <div class="acc-content">
+  <div class="wrap thesis-about-grid">
+    <div class="headshot-frame">
+      <img src="britt-about.jpg" alt="Britt Wylde" onerror="this.outerHTML='&lt;div class=&quot;headshot-placeholder&quot;&gt;&lt;span&gt;Headshot&lt;/span&gt;&lt;small&gt;Add britt-about.jpg to this folder&lt;/small&gt;&lt;/div&gt;'">
+    </div>
+    <div>
+    <p>You were shaped by hands that weren't yours, assigned roles before anybody asked whether you wanted them, handed a whole life that fit the people around you better than it ever fit you. And you learned it. You got good in there.</p>
+    <p class="pull serif">Feral is what comes after that.</p>
+    <p>Not the animal kind. This is feral on human terms only: molded, shaped, assigned a life, taught the rules, got good in there, chose to go anyway. That's the whole definition, and it's why the word fit better than anything softer would have.</p>
+    <p>What's on the other side isn't a better performance. It's <em>inhabiting</em> the thing instead of performing in it. Fulfillment doesn't come from a new job, a new city, a new body, a new relationship. It comes from alignment: days finally matching the person living them, work finally pointing at actual purpose instead of somebody else's idea of it.</p>
+    <p>Britt didn't build FERAL from theory. They ran every letter of it on their own life first, because proof does more than promise. They're thirty-four, nonbinary, and raising four kids alone while building this out loud. There's no phase of Feel, Examine, Release, Align, or Live they haven't actually lived, usually with a kid in the next room and zero time to make it look graceful.</p>
+    <p>The same five moves showed up first in Britt's own recovery, then in solo parenting, then in rebuilding after a relationship ended, then in leading, then in stepping into their own name. Same framework, different room every time. Not a fix for one problem. The thing underneath all of them.</p>
+    </div>
+  </div>
+  </div>
+</details>
+
+<!-- FIELD GUIDE / OPT-IN -->
+<details class="acc-section field-guide" id="field-guide">
+  <summary class="acc-summary">
+    <div class="wrap acc-summary-inner">
+      <span class="acc-summary-title">The Feral Field Guide</span>
+      <span class="acc-icon-wrap"><span class="acc-icon-plus">+</span><span class="acc-icon-minus">−</span></span>
+    </div>
+  </summary>
+  <div class="acc-content">
+  <div class="wrap">
+    <div class="fg-mock">
+      <div class="fg-period">.</div>
+      <h4>The Feral<br>Field Guide</h4>
+      <div class="fg-foot">Free · Two Audio Tracks Included</div>
+    </div>
+    <div class="fg-copy">
+      <div class="tag">Free Lead Magnet</div>
+      <h2>The Feral Field Guide</h2>
+      <p>Thirteen pages: the audit that shows where you're still performing, all five FERAL moves broken down, and one example traced start to finish.</p>
+      <div class="fg-details">
+        <div><strong>13</strong>Pages</div>
+        <div><strong>2</strong>Audio Tracks</div>
+        <div><strong>12</strong>Audit Statements</div>
+        <div><strong>5</strong>FERAL Moves</div>
+      </div>
+      <form class="opt-in" onsubmit="event.preventDefault();">
+        <input type="email" name="email" placeholder="you@email.com" required>
+        <button type="submit">Get It Free</button>
+      </form>
+      <p class="fg-fineprint">Includes track two, the guided Feel practice. If you only do one thing today, do that one.</p>
+    </div>
+  </div>
+  </div>
+</details>
+
+<!-- FERAL FRAMEWORK -->
+<details class="acc-section block-emerald" id="feral">
+  <summary class="acc-summary">
+    <div class="wrap acc-summary-inner">
+      <span class="acc-summary-title">FERAL: The Framework</span>
+      <span class="acc-icon-wrap"><span class="acc-icon-plus">+</span><span class="acc-icon-minus">−</span></span>
+    </div>
+  </summary>
+  <div class="acc-content">
+  <div class="wrap">
+    <div class="tag">The Framework</div>
+    <h2 class="section-title">FERAL</h2>
+    <p class="section-lede">The way back to the wild you were born to <em>live from</em>. Not a ladder, a spiral: same five moves, run backward, sideways, and forward.</p>
+
+    <div class="directions-strip">
+      <div>
+        <span class="dir-label">Backward</span>
+        <p>On a choice already made and never understood.</p>
+      </div>
+      <div>
+        <span class="dir-label">Sideways</span>
+        <p>On the decision sitting in front of you right now.</p>
+      </div>
+      <div>
+        <span class="dir-label">Forward</span>
+        <p>On the ones not yet made.</p>
+      </div>
+    </div>
+
+    <div class="feral-list">
+      <div class="feral-row">
+        <div class="letter">F</div>
+        <div class="word-tone"><div class="word">Feel</div><div class="tone">Raw, unmanaged</div></div>
+        <p>Years in a society that runs on emotional suppression mean feeling often starts as relearning how to connect to your body at all. Stop handling the feeling and let it be there first, no narrating, no fixing, no explaining it away to whoever's watching, so there's something real underneath to examine.</p>
+        <div class="shift-bar"><span class="from">numb</span><span class="arrow">→</span><span class="to">present</span></div>
+      </div>
+      <div class="feral-row">
+        <div class="letter">E</div>
+        <div class="word-tone"><div class="word">Examine</div><div class="tone">Gentle, no judgment</div></div>
+        <p>Examination is validation, acceptance of what surfaced, letting it exist instead of arguing it back down. What's never acknowledged can't be released, and you can't release what you never let yourself see. Soft on purpose. If this phase had teeth you'd white-knuckle past it into Release and nothing would come loose.</p>
+        <div class="shift-bar"><span class="from">shame</span><span class="arrow">→</span><span class="to">acceptance</span></div>
+      </div>
+      <div class="feral-row">
+        <div class="letter">R</div>
+        <div class="word-tone"><div class="word">Release</div><div class="tone">Freeing, a little grief</div></div>
+        <p>Set down what was never yours to carry. The role, the expectation, the version somebody else needed. Comes with grief, because you're also letting go of who you were while you carried it.</p>
+        <div class="shift-bar"><span class="from">carrying</span><span class="arrow">→</span><span class="to">unburdened</span></div>
+      </div>
+      <div class="feral-row">
+        <div class="letter">A</div>
+        <div class="word-tone"><div class="word">Align</div><div class="tone">Clarifying, decisive</div></div>
+        <p>Root back into what's actually true about your safety and your own self-trust right now, not the old story that says you're still unsafe. Stops being internal and starts costing something, and some things don't survive the change. That's the process working, not failing.</p>
+        <div class="shift-bar"><span class="from">drifting</span><span class="arrow">→</span><span class="to">directed</span></div>
+      </div>
+      <div class="feral-row">
+        <div class="letter">L</div>
+        <div class="word-tone"><div class="word">Live</div><div class="tone">Steady, self-directed</div></div>
+        <p>Where alignment stops being internal and becomes action: do the next right thing, then do it again when it's boring and nobody noticed. Nobody is coming to validate this. That isn't the bad news, that's the entire point.</p>
+        <div class="shift-bar"><span class="from">knowing</span><span class="arrow">→</span><span class="to">inhabiting</span></div>
+      </div>
+    </div>
+
+    <p class="feral-closing">Nobody graduates. FERAL is the process you run again every time you drift, and it walks you back.</p>
+  </div>
+  </div>
+</details>
+
+<!-- BOOK -->
+<details class="acc-section block-plum book-block" id="book">
+  <summary class="acc-summary">
+    <div class="wrap acc-summary-inner">
+      <span class="acc-summary-title">The Book: Be Untamable</span>
+      <span class="acc-icon-wrap"><span class="acc-icon-plus">+</span><span class="acc-icon-minus">−</span></span>
+    </div>
+  </summary>
+  <div class="acc-content">
+  <div class="wrap">
+    <div class="tag">The Book</div>
+    <h2 class="section-title">Be Untamable</h2>
+    <p class="book-quote serif">This isn't a phase. It's the person you become and stay.</p>
+    <p>Be Untamable is the book-length version of the promise this brand runs on: rooted enough that nothing, not a bad season, not somebody else's discomfort, can talk you back into performing.</p>
+    <a href="#field-guide" class="btn solid">Start with the Field Guide</a>
+    <div class="book-updates">
+      <p class="book-updates-label">Or get word the moment Be Untamable is out.</p>
+      <form class="opt-in" onsubmit="event.preventDefault();">
+        <input type="email" name="email" placeholder="you@email.com" required>
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+  </div>
+  </div>
+</details>
+
+<!-- TEAMS & KEYNOTES -->
+<details class="acc-section block-emerald" id="speaking">
+  <summary class="acc-summary">
+    <div class="wrap acc-summary-inner">
+      <span class="acc-summary-title">Speaking: Keynotes &amp; Workshops</span>
+      <span class="acc-icon-wrap"><span class="acc-icon-plus">+</span><span class="acc-icon-minus">−</span></span>
+    </div>
+  </summary>
+  <div class="acc-content">
+  <div class="wrap">
+    <div class="tag">The Stage</div>
+    <h2 class="section-title">Feral: keynotes &amp; team workshops</h2>
+    <p class="section-lede">Teams built on leaders performing authority instead of inhabiting authentic leadership get exactly what that predicts: poor morale, high turnover, low engagement, lower productivity.</p>
+
+    <div class="speak-grid">
+      <div class="speak-card">
+        <div class="kicker">Keynote</div>
+        <h3>Be Feral: Inhabiting Your Authenticity Right Where You Are</h3>
+        <p class="serif" style="font-size:19px;display:block;margin:10px 0;">The most useful person in the room is the one who stopped performing.</p>
+        <p>Britt's story and the FERAL framework, built for that room.</p>
+      </div>
+      <div class="speak-card">
+        <div class="kicker">Workshop</div>
+        <h3>FERAL for Teams</h3>
+        <p style="margin-bottom:14px;">The same five moves, reframed for a room instead of one person.</p>
+        <div class="tf-list">
+          <div class="tf-row"><span class="tf-letter">F</span><span class="tf-text"><strong>Feel.</strong> Name what's actually happening instead of performing fine.</span></div>
+          <div class="tf-row"><span class="tf-letter">E</span><span class="tf-text"><strong>Examine.</strong> Conflict becomes mutual understanding, not blame.</span></div>
+          <div class="tf-row"><span class="tf-letter">R</span><span class="tf-text"><strong>Release.</strong> Let go of the roles and turf in the way of the work.</span></div>
+          <div class="tf-row"><span class="tf-letter">A</span><span class="tf-text"><strong>Align.</strong> Match strengths to a shared purpose.</span></div>
+          <div class="tf-row"><span class="tf-letter">L</span><span class="tf-text"><strong>Live.</strong> Do it on a regular Tuesday, not just at the offsite.</span></div>
+        </div>
+        <p style="margin-top:14px;">Teams leave more creative, more willing to bring their whole selves to work, and actually engaged instead of checked out.</p>
+      </div>
+    </div>
+
+    <p class="speak-mechanism">Teams don't follow the title, they follow the nervous system running it. The same five moves that walk a person back to themselves build mutual understanding on a team too, since most conflict is a few people bracing against something nobody's said out loud. What's left is a leader with the confidence, clarity, and direction to actually run the room, and a workplace that shifts because of it.</p>
+
+    <a href="mailto:brittanysandovalrn@gmail.com?subject=Booking%20Feral" class="btn solid">Book Britt to speak</a>
+  </div>
+  </div>
+</details>
+
+<!-- PODCASTS -->
+<details class="acc-section block-bone" id="podcast">
+  <summary class="acc-summary">
+    <div class="wrap acc-summary-inner">
+      <span class="acc-summary-title">Podcasts</span>
+      <span class="acc-icon-wrap"><span class="acc-icon-plus">+</span><span class="acc-icon-minus">−</span></span>
+    </div>
+  </summary>
+  <div class="acc-content">
+  <div class="wrap">
+    <div class="tag">On Air</div>
+    <h2 class="section-title">Podcasts</h2>
+    <p class="section-lede" style="color:rgba(14,20,17,0.75);">FERAL wasn't built for one audience. Same five moves, different room, and Britt's run every version personally.</p>
+
+    <div class="doorway-list">
+      <div class="doorway-row">
+        <h3>The one in recovery</h3>
+        <p class="doorway-tag">CPTSD &amp; long-term self-suppression</p>
+        <p>Not substance recovery, recovery of self. The body remembers what the mind learned to move past, and FERAL meets the nervous system first.</p>
+      </div>
+      <div class="doorway-row">
+        <h3>The one reparenting</h3>
+        <p class="doorway-tag">Solo parenting four kids</p>
+        <p>Raising them while reclaiming the parts set down to do it right, usually on no sleep.</p>
+      </div>
+      <div class="doorway-row">
+        <h3>The one recentering</h3>
+        <p class="doorway-tag">Rebuilding after separation</p>
+        <p>A life that's actually theirs after a relationship ends, not the shared one.</p>
+      </div>
+      <div class="doorway-row">
+        <h3>The never-taught</h3>
+        <p class="doorway-tag">Neurodivergent, or never handed the tools</p>
+        <p>Regulation, boundaries, self-trust. Masking was the default. FERAL replaced it.</p>
+      </div>
+      <div class="doorway-row">
+        <h3>The one coming out</h3>
+        <p class="doorway-tag">To themselves, first</p>
+        <p>Stepping into gender and queerness for yourself, before anyone else gets a vote.</p>
+      </div>
+    </div>
+
+    <div class="podcast-inquiry">
+      <div>
+        <h4>Have a show?</h4>
+        <p>Book Britt as a guest on identity, leadership, or FERAL applied to your audience.</p>
+        <a href="mailto:brittanysandovalrn@gmail.com?subject=Podcast%20Booking%3A%20Britt%20as%20Guest" class="btn">Book Britt as a guest</a>
+      </div>
+      <div>
+        <h4>Pitching a guest or collab?</h4>
+        <p>Hosts and potential guests both, send it over.</p>
+        <a href="mailto:brittanysandovalrn@gmail.com?subject=Podcast%20Pitch%2FCollab" class="btn">Send a pitch</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</details>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-period">.</div>
+      <div class="foot-links">
+        <a href="#field-guide">Field Guide</a>
+        <a href="#feral">FERAL</a>
+        <a href="#book">The Book</a>
+        <a href="#speaking">Speaking</a>
+        <a href="#podcast">Podcasts</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>b.wylde &middot; @borntob.wylde</span>
+      <span>&copy; 2026 Britt Wylde. Be Wylde.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if(el && el.tagName === 'DETAILS'){
+        e.preventDefault();
+        el.open = true;
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
